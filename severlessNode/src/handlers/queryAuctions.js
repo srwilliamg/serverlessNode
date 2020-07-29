@@ -3,8 +3,8 @@ import AWS from 'aws-sdk';
 const dynamodb =  new AWS.DynamoDB.DocumentClient();
 
 async function queryAuctions(event, context) {
-  const response = await dynamodb.query({
-    TableName:'AuctionsTable',
+  const response = await dynamodb.scan({
+    TableName: process.env.AUCTIONS_TABLE_NAME,
     // Item: auction,
   }).promise();
 

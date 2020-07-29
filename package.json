@@ -7,5 +7,12 @@
     "test": "node server.js"
   },
   "author": "William Salazar (srwilliamg)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@middy/core": "^1.1.0",
+    "@middy/http-error-handler": "^1.1.0",
+    "@middy/http-event-normalizer": "^1.1.0",
+    "@middy/http-json-body-parser": "^1.1.0",
+    "http-errors": "^1.8.0"
+  }
 }
