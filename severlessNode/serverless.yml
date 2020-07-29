@@ -1,7 +1,7 @@
 service:
   name: nodeserverless
 
-plugins:
+plugins: 
   - serverless-bundle
   - serverless-pseudo-parameters
 
@@ -11,7 +11,13 @@ provider:
   memorySize: 256
   stage: ${opt:stage, 'dev'}
   region: us-west-1
-  
+  iamRoleStatements:
+    - ${file(./iam/AuctionsTableIAM.yml):AuctionsTableIAM}
+
+resources:
+  Resources:
+    AuctionsTable: ${file(./resources/AuctionsTable.yml):AuctionsTable}
+
 functions:
   createAuction:
     handler: src/handlers/createAuction.handler
@@ -19,3 +25,13 @@ functions:
       - http:
           method: POST
           path: /auction
+  queryAuction:
+    handler: src/handlers/queryAuctions.handler
+    events:
+      - http:
+          method: GET
+          path: /getAuctions
+
+custom:
+  bundle:
+    linting: false
