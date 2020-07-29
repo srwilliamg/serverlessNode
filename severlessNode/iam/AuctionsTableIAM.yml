@@ -2,7 +2,7 @@ AuctionsTableIAM:
   Effect: Allow
   Action:
     - dynamodb:PutItem
-    - dynamodb:Query
+    - dynamodb:GetItem
     - dynamodb:Scan
   Resource:
     - ${self:custom.AuctionsTable.arn}
